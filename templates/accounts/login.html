@@ -1,0 +1,38 @@
+{% extends "layouts/layout1.html" %}
+
+{% block content %}
+
+<div class="uk-container">
+    <br><center>
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+            <h3 class="uk-card-title"><span uk-icon="icon: sign-in"></span> Login</h3>
+
+            {% if error != "" %}
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+
+            <form method='POST'>
+                <fieldset class="uk-fieldset">
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Username/Email" name="username">
+                    </div>
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="password" placeholder="Password" name="password">
+                    </div>
+
+                    <button class="uk-button uk-button-default">Login</button>
+
+                    <br><a href="/register">Don't have an account?</a>
+
+                </fieldset>
+            </form>
+        </div>
+    </center>
+</div>
+
+{% endblock %}

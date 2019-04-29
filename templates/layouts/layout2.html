@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <title>paste.bork.pw</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="/static/content/uikit.min.css" />
+        {% block stylesheets %}{% endblock %}
+        <script src="/static/scripts/uikit.min.js"></script>
+        <script src="/static/scripts/uikit-icons.min.js"></script>
+        {% block scripts %}{% endblock %}
+    </head>
+
+    <body>
+
+        <div class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <a href="/" class="uk-navbar-item uk-logo">paste.bork.pw</a>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a href="/{{ current_user.username }}/create"><span uk-icon="icon: plus"></span></a></li>
+
+                    <li>
+                        <a href="#"><span uk-icon="icon: user"></span> Account</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active">Signed in as<br><strong>{{ current_user.username }}</strong></li>
+
+                                <li class="uk-nav-divider"></li>
+                                <li class="uk-active"><a href="/{{ current_user.username }}">Your pastes</a></li>
+                                <li class="uk-active"><a href="/{{ current_user.username }}/starred">Your starred pastes</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li class="uk-active"><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                
+                </ul>
+            </div>
+        </div>
+
+        {% block content %}{% endblock %}
+
+    </body>
+</html>

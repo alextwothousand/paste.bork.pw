@@ -1,0 +1,44 @@
+{% extends "layouts/layout2.html" %}
+
+{% block content %}
+<br>
+<div class="uk-container">
+    {% if pastename != "" %}
+    <div class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ pastename }}</p>
+    </div>
+    {% endif %}
+
+    <div uk-grid>
+        <div>
+            <h1><strong>{{ current_user.username }}</strong></h1>
+        </div>
+
+        <div>
+            <h1>Your Pastes</h1>
+            {% if snippets != [] %}
+            <table class="uk-table">
+                <!--<caption>Table Caption</caption>-->
+                <thead>
+                    <tr>
+                        <th>SHA</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for snippet in snippets %}
+                    <tr>
+                        <td><a href="/{{ current_user.username}}/{{ snippet.info }}" class="uk-text-color: black;">{{ snippet.sha }}</a></td>
+                        <td>{{ snippet.info }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            You have no pastes! Press the <span uk-icon="icon: plus"></span> in the navbar to create a new paste.
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layouts/layout1.html" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/content/animate.css"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="uk-container">
+    <center>
+        <br><h1 class="animated bounce">paste.bork.pw</h1>
+        A no-fuss code snippet sharing service.<br>
+        <a href="/about">Why choose us?</a>
+        
+        {% if snippets != [] %}
+        <table class="uk-table uk-table-divider">
+            <caption>Recent Public Snippets</caption>
+            <thead>
+                <tr>
+                    <th>SHA</th>
+                    <th>Name</th>
+                    <th>Time ago</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for snippet in snippets %}
+                <tr>
+                    <td>{{ snippet.sha }}</td>
+                    <td>{{ snippet.info }}</td>
+                    <td>X hours ago</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </center>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layouts/layout2.html" %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="uk-container">
+    <br>
+    <center>
+        <h1>{{ script.info }}</h1>
+        <h3>By {{ author }}</h3>
+    </center>
+
+    <pre class="prettyprint; white-space: pre-line;">{{ script.code }}</pre>
+
+    <center>
+        <a href="/{{ author }}" class="uk-button uk-button-secondary" type="button">Back</a>
+        <button class="uk-button uk-button-primary" type="button" id="btn" data-clipboard-text="https://paste.bork.pw/{{ author }}/{{ script.info }}">Copy URL to Clipboard</button>
+
+        {% if current_user.username == author %}
+        <button uk-toggle="target: #delete" class="uk-button uk-button-default" type="button">Delete Paste</button>
+
+        <div id="delete" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Confirmation</h2>
+                <p>Are you sure you would like to delete your paste, {{ author }}?</p>
+                <p class="uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">No</button>
+                    <a href="/{{ author }}/{{ script.info }}/delete" class="uk-button uk-button-primary" type="button">Yes</a>
+                </p>
+            </div>
+        </div>
+        {% endif %}
+    </center>
+</div>
+
+<script src="/static/scripts/clipboard.min.js"></script>
+<script src="/static/scripts/urltoclipboard.js"></script>
+{% endblock %}

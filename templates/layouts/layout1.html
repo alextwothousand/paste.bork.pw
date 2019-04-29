@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title>paste.bork.pw</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="/static/content/uikit.min.css" />
+        {% block stylesheets %}{% endblock %}
+        <script src="/static/scripts/uikit.min.js"></script>
+        <script src="/static/scripts/uikit-icons.min.js"></script>
+        {% block scripts %}{% endblock %}
+    </head>
+
+    <body>
+
+        <div class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <a href="/" class="uk-navbar-item uk-logo">paste.bork.pw</a>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a href="https://github.com/infin1tyy/yet-to-add-a-repo"><span uk-icon="icon: git-fork"></span> GitHub</a></li>
+
+                    <li>
+                        <a href="#"><span uk-icon="icon: user"></span> Account</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="/login"><span uk-icon="icon: sign-in"></span> Login</a></li>
+                                <li><a href="/register"><span uk-icon="icon: lock"></span> Register</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                
+                </ul>
+            </div>
+        </div>
+
+        {% block content %}{% endblock %}
+
+    </body>
+</html>

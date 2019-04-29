@@ -1,0 +1,46 @@
+{% extends "layouts/layout2.html" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/content/tabsize.css" />
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="uk-container">
+    <center>
+        {% if error != "" %}
+        <div class="uk-alert-danger" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            <fieldset class="uk-fieldset">
+
+                <legend class="uk-legend">Create a new paste</legend>
+
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" placeholder="Title..." name="title">
+                </div>
+
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" rows="5" placeholder="Description..." name="description"></textarea>
+                </div>
+
+                <div class="uk-margin">
+                    <textarea class="uk-textarea tabSize" rows="10" placeholder="Code..." name="code"></textarea>
+                </div>
+
+                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                    <label><input class="uk-radio" type="radio" name="type" value="public" checked> Public</label>
+                    <label><input class="uk-radio" type="radio" name="type" value="private"> Private</label>
+                </div>
+
+                <button class="uk-button uk-button-default">Paste it!</button>
+
+            </fieldset>
+        </form>
+    </center>
+</div>
+{% endblock %}
