@@ -8,7 +8,7 @@
 <div class="uk-container">
     <br>
     <center>
-        <h1>{{ script.info }}</h1>
+        <h1>{{ script.info }} (<a href="/{{ author }}/{{ script.info }}/raw">raw</a>)</h1>
         <h3>By {{ author }}</h3>
     </center>
 
@@ -33,6 +33,7 @@
         </div>
         {% endif %}
     </center>
+    <br>
 </div>
 
 <script src="/static/scripts/clipboard.min.js"></script>

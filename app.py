@@ -280,6 +280,34 @@ def delete(name, scriptname):
             '404.html'
         )
 
+@app.route("/<name>/<scriptname>/raw")
+def raw(name, scriptname):
+    if current_user.username == name:
+        if db.session.query(db.exists().where(Paste.sha == scriptname)).scalar() is True:
+            return redirect(
+                url_for(
+                    'raw', 
+                    name=name, 
+                    scriptname=Paste.query.filter_by(sha=scriptname).first().info
+                )
+            )
+
+        elif db.session.query(db.exists().where(Paste.info == scriptname)).scalar() is True:
+            return render_template(
+                'raw.html',
+                code=Paste.query.filter_by(info=scriptname).first().code
+            )
+
+        else:
+            return render_template(
+                '404.html'
+            )
+
+    else:
+        return render_template(
+            '404.html'
+        )
+
 
 if __name__ == '__main__':
     db.create_all()
