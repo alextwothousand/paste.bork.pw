@@ -8,4 +8,4 @@ Run `python -m venv env` in the terminal then select it as your default interpre
 Run `pip install requirements.txt`.
 
 ### Notes
-This isn't fully complete but I will get around to completing this, along with a UI overhaul. The main functionality certainly does work though.
+This isn't fully complete but I will get around to completing this, along with a UI overhaul. The main features (pasting, sharing, deleting, etc) works perfectly though.
